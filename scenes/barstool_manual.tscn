@@ -2,12 +2,24 @@
 
 [ext_resource type="PackedScene" uid="uid://bbxj1xcx6ondh" path="res://assets/barstool/barstool_manual.glb" id="1_svaee"]
 [ext_resource type="Shader" uid="uid://dg5h8ull8hb4d" path="res://assets/barstool/materials/barstool_manual_metal.tres" id="2_ix61r"]
+[ext_resource type="Shader" uid="uid://c104a2pnfb65d" path="res://assets/barstool/materials/barstool_manual_seat.tres" id="3_jro02"]
+[ext_resource type="Shader" uid="uid://d38l5tf8665g8" path="res://assets/barstool/materials/barstool_manual_rubber.tres" id="4_ntcqs"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tbgi4"]
 render_priority = 0
 shader = ExtResource("2_ix61r")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jro02"]
+render_priority = 0
+shader = ExtResource("3_jro02")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q8cfr"]
+render_priority = 0
+shader = ExtResource("4_ntcqs")
+
 [node name="barstool_manual" unique_id=1470201345 instance=ExtResource("1_svaee")]
 
 [node name="Barstool" parent="." index="0" unique_id=663166935]
 surface_material_override/0 = SubResource("ShaderMaterial_tbgi4")
+surface_material_override/1 = SubResource("ShaderMaterial_jro02")
+surface_material_override/2 = SubResource("ShaderMaterial_q8cfr")
