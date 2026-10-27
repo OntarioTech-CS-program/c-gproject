@@ -1,5 +1,13 @@
 [gd_scene format=3 uid="uid://cn34dtkofvah7"]
 
-[ext_resource type="PackedScene" uid="uid://copeeikr5pknw" path="res://assets/barstool/barstool.glb" id="1_skbxr"]
+[ext_resource type="PackedScene" uid="uid://cx2b2qvngosek" path="res://assets/barstool/barstool.glb" id="1_skbxr"]
+[ext_resource type="Shader" uid="uid://kkuq7md8fphv" path="res://assets/barstool/barstool.tres" id="2_01mvi"]
 
-[node name="barstool" unique_id=997798185 instance=ExtResource("1_skbxr")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_01mvi"]
+render_priority = 0
+shader = ExtResource("2_01mvi")
+
+[node name="barstool" unique_id=1085003114 instance=ExtResource("1_skbxr")]
+
+[node name="Barstool" parent="." index="0" unique_id=848524309]
+surface_material_override/0 = SubResource("ShaderMaterial_01mvi")
