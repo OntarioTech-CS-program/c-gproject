@@ -1,3 +1,11 @@
 [gd_scene format=3 uid="uid://dsbku5opfktyk"]
 
+[ext_resource type="PackedScene" uid="uid://cn34dtkofvah7" path="res://scenes/barstool.tscn" id="1_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://bbxj1xcx6ondh" path="res://assets/barstool/barstool_manual.glb" id="2_sugp2"]
+
 [node name="Main" type="Node" unique_id=380946898]
+
+[node name="barstool" parent="." unique_id=1085003114 instance=ExtResource("1_0wfyh")]
+
+[node name="barstool_manual" parent="." unique_id=1470201345 instance=ExtResource("2_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)

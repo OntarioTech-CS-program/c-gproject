@@ -1,0 +1,31 @@
+[gd_resource type="VisualShader" format=3 uid="uid://kkuq7md8fphv"]
+
+[ext_resource type="Texture2D" uid="uid://dt4hyvl5j20lf" path="res://assets/barstool/textures/barstool_base_color.png" id="1_qilf1"]
+[ext_resource type="Texture2D" uid="uid://dm5pi02a5a75w" path="res://assets/barstool/textures/barstool_metallic.png" id="2_4rjfy"]
+[ext_resource type="Texture2D" uid="uid://cbyodl5jwrb4b" path="res://assets/barstool/textures/barstool_normal.png" id="3_aykxm"]
+[ext_resource type="Texture2D" uid="uid://b6hrbdg58ishi" path="res://assets/barstool/textures/barstool_roughness.png" id="4_q2e1s"]
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_4ywl6"]
+texture = ExtResource("1_qilf1")
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_4git5"]
+texture = ExtResource("2_4rjfy")
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_ahqc8"]
+texture = ExtResource("3_aykxm")
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_r2mda"]
+texture = ExtResource("4_q2e1s")
+
+[resource]
+nodes/vertex/0/position = Vector2(400, 160)
+nodes/fragment/0/position = Vector2(-80, 860)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_4ywl6")
+nodes/fragment/2/position = Vector2(-400, 420)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture_4git5")
+nodes/fragment/3/position = Vector2(-400, 800)
+nodes/fragment/4/node = SubResource("VisualShaderNodeTexture_ahqc8")
+nodes/fragment/4/position = Vector2(-400, 1580)
+nodes/fragment/5/node = SubResource("VisualShaderNodeTexture_r2mda")
+nodes/fragment/5/position = Vector2(-400, 1180)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 3, 0, 0, 2, 5, 0, 0, 3, 4, 0, 0, 9)

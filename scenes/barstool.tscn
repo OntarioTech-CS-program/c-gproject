@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cn34dtkofvah7"]
 
 [ext_resource type="PackedScene" uid="uid://cx2b2qvngosek" path="res://assets/barstool/barstool.glb" id="1_skbxr"]
-[ext_resource type="Shader" uid="uid://kkuq7md8fphv" path="res://assets/barstool/barstool.tres" id="2_01mvi"]
+[ext_resource type="Shader" uid="uid://kkuq7md8fphv" path="res://assets/barstool/materials/barstool.tres" id="2_01mvi"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_01mvi"]
 render_priority = 0
