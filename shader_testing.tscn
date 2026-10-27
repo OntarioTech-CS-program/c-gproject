@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://bhmf3pl32dago"]
+
+[ext_resource type="Script" uid="uid://nxcdyush4i0p" path="res://shader_toggles.gd" id="1_rm5mi"]
+[ext_resource type="Shader" uid="uid://bohejbk4jtbrh" path="res://shaders/lighting.tres" id="2_l6nis"]
+[ext_resource type="Texture2D" uid="uid://64uuctv60q8t" path="res://icon.svg" id="3_l6nis"]
+[ext_resource type="PackedScene" uid="uid://dd5lott2ibdxo" path="res://door.tscn" id="4_5140r"]
+[ext_resource type="Shader" uid="uid://dv0xnjqf20uh0" path="res://shaders/lighting_ambient_disabled.tres" id="4_dcn15"]
+[ext_resource type="PackedScene" uid="uid://b5j35hxvqfw80" path="res://door_handle_(2).tscn" id="5_dcn15"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_af24x"]
+render_priority = 0
+shader = ExtResource("2_l6nis")
+shader_parameter/albedo = true
+shader_parameter/BaseColor = Color(0.7307476, 0.7329991, 0.7391514, 1)
+shader_parameter/Texture2DParameter = ExtResource("3_l6nis")
+shader_parameter/specular = false
+shader_parameter/SpecularCololr = Color(0, 0, 0, 1)
+shader_parameter/FloatParameter = 1.0
+shader_parameter/diffuse = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l6nis"]
+render_priority = 0
+shader = ExtResource("2_l6nis")
+shader_parameter/albedo = true
+shader_parameter/BaseColor = Color(1, 1, 1, 1)
+shader_parameter/Texture2DParameter = ExtResource("3_l6nis")
+shader_parameter/specular = true
+shader_parameter/SpecularCololr = Color(1, 1, 1, 1)
+shader_parameter/FloatParameter = 4.0
+shader_parameter/diffuse = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5l37j"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_215db"]
+material = SubResource("StandardMaterial3D_5l37j")
+
+[sub_resource type="Environment" id="Environment_hg0er"]
+ambient_light_source = 2
+ambient_light_color = Color(0.9355364, 0.9355364, 0.93553627, 1)
+ambient_light_energy = 0.14
+
+[node name="ShaderTesting" type="Node3D" unique_id=526358687]
+
+[node name="ShaderToggles" type="Node" parent="." unique_id=1606636675]
+script = ExtResource("1_rm5mi")
+materials = Array[Material]([SubResource("ShaderMaterial_af24x"), SubResource("ShaderMaterial_l6nis")])
+specular_materials = Array[Material]([SubResource("ShaderMaterial_l6nis")])
+shader = ExtResource("2_l6nis")
+shader_ambient_disabled = ExtResource("4_dcn15")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=4855550]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5174405, 0, 0)
+mesh = SubResource("SphereMesh_215db")
+surface_material_override/0 = SubResource("ShaderMaterial_af24x")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=2109452603]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5344531, 0, 0)
+mesh = SubResource("SphereMesh_215db")
+surface_material_override/0 = SubResource("ShaderMaterial_l6nis")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=388789485]
+transform = Transform3D(-0.9921831, 0, -0.12479104, 0, 1, 0, 0.12479104, 0, -0.9921831, 0, 0, -1.842463)
+environment = SubResource("Environment_hg0er")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1361858668]
+transform = Transform3D(1, 0, 0, 0, -0.5017848, 0.8649925, 0, -0.8649925, -0.5017848, 0.5344531, 0, 0)
+
+[node name="door2" parent="." unique_id=1571694245 instance=ExtResource("4_5140r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -0.27729225)
+
+[node name="door_handle (2)" parent="door2" unique_id=1182458620 instance=ExtResource("5_dcn15")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1162821133]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer" unique_id=436887077]
+offset_right = 238.0
+offset_bottom = 219.0
+text = "1: Albedo
+2: Diffuse
+3: Ambient
+4: Specular"

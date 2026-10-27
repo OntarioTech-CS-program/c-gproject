@@ -1,3 +1,5 @@
 [gd_resource type="VisualShader" format=3 uid="uid://dg5h8ull8hb4d"]
 
 [resource]
+flags/unshaded = true
+nodes/fragment/0/position = Vector2(373.33334, 173.33333)

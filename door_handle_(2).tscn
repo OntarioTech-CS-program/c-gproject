@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://b5j35hxvqfw80"]
+
+[ext_resource type="PackedScene" uid="uid://c8wyj4akbuskl" path="res://assets/door/door_handle (2).glb" id="1_limca"]
+
+[node name="door_handle (2)" unique_id=1182458620 instance=ExtResource("1_limca")]
