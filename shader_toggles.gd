@@ -27,3 +27,6 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("4"):
 		for material in specular_materials:
 			material.set_shader_parameter("specular",!material.get_shader_parameter("specular"))
+	if Input.is_action_just_pressed("5"):
+		for material in materials:
+			material.set_shader_parameter("Wrap",!material.get_shader_parameter("Wrap"))
