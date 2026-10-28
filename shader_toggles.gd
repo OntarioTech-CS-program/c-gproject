@@ -8,6 +8,10 @@ extends Node
 @export var shader_ambient_disabled : VisualShader
 @export var shader_xray : VisualShader
 @export var shader_ambient_disabled_xray : VisualShader
+@export var color_corrections: Array[CompressedTexture3D]
+@export var environment : WorldEnvironment
+@export var color_number := 0
+
 var ambient = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -47,3 +51,9 @@ func _process(_delta: float) -> void:
 			material.set_shader_parameter("Wrap",!material.get_shader_parameter("Wrap"))
 		for material in materials_xray:
 			material.set_shader_parameter("Wrap",!material.get_shader_parameter("Wrap"))
+	if Input.is_action_just_pressed("6"):
+		color_number += 1
+		if color_number == color_corrections.size():
+			color_number = 0
+		environment.environment.adjustment_color_correction = color_corrections[color_number]
+		
