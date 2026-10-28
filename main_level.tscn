@@ -7,10 +7,13 @@
 [ext_resource type="Shader" uid="uid://bohejbk4jtbrh" path="res://shaders/lighting.tres" id="3_aonjr"]
 [ext_resource type="Script" uid="uid://ckp43kw6jgaqg" path="res://camera.gd" id="3_oeaww"]
 [ext_resource type="Texture2D" uid="uid://dm5pi02a5a75w" path="res://assets/barstool/textures/barstool_metallic.png" id="5_htena"]
+[ext_resource type="Shader" uid="uid://brfi2v2777qlx" path="res://shaders/lighting_xray.tres" id="6_do8ha"]
 [ext_resource type="Texture2D" uid="uid://cbyodl5jwrb4b" path="res://assets/barstool/textures/barstool_normal.png" id="6_xqiim"]
 [ext_resource type="Texture2D" uid="uid://b6hrbdg58ishi" path="res://assets/barstool/textures/barstool_roughness.png" id="7_6pb3s"]
 [ext_resource type="Texture2D" uid="uid://dt4hyvl5j20lf" path="res://assets/barstool/textures/barstool_base_color.png" id="8_e3ldi"]
 [ext_resource type="Shader" uid="uid://dv0xnjqf20uh0" path="res://shaders/lighting_ambient_disabled.tres" id="9_ah7fh"]
+[ext_resource type="Shader" uid="uid://dv7yvyerqs5pk" path="res://shaders/silhouette_solid.gdshader" id="10_aonjr"]
+[ext_resource type="Shader" uid="uid://d0fig8sbuwhj5" path="res://shaders/lighting_ambient_disabled_xray.tres" id="14_htena"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_oeaww"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -23,6 +26,7 @@ sky_material = SubResource("ProceduralSkyMaterial_oeaww")
 background_mode = 2
 sky = SubResource("Sky_aonjr")
 glow_enabled = true
+adjustment_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ttf08"]
 
@@ -63,6 +67,8 @@ shader_parameter/albedo = true
 shader_parameter/BaseColor = Color(0.67206407, 0.67206407, 0.67206407, 1)
 shader_parameter/Metallic = 0.8
 shader_parameter/Roughness = 1.0
+shader_parameter/Anistropy = 0.0
+shader_parameter/AnistropyFlow = Vector2(0, 1)
 shader_parameter/specular = false
 shader_parameter/SpecularColor = Color(1, 1, 1, 1)
 shader_parameter/SpecularPower = 4.0
@@ -136,6 +142,8 @@ shader_parameter/albedo = true
 shader_parameter/BaseColor = Color(0.57700837, 0.5770084, 0.57700837, 1)
 shader_parameter/Metallic = 0.9430000447925
 shader_parameter/Roughness = 0.51600002451
+shader_parameter/Anistropy = 0.5
+shader_parameter/AnistropyFlow = Vector2(0, 1)
 shader_parameter/specular = false
 shader_parameter/SpecularColor = Color(1, 1, 1, 1)
 shader_parameter/SpecularPower = 4.0
@@ -153,6 +161,8 @@ shader_parameter/albedo = true
 shader_parameter/BaseColor = Color(0.49781692, 0.49520403, 0, 1)
 shader_parameter/Metallic = 0.8710000413725
 shader_parameter/Roughness = 0.0
+shader_parameter/Anistropy = 0.5
+shader_parameter/AnistropyFlow = Vector2(0, 1)
 shader_parameter/specular = true
 shader_parameter/SpecularColor = Color(1, 1, 1, 1)
 shader_parameter/SpecularPower = 4.0
@@ -653,6 +663,8 @@ shader_parameter/albedo = true
 shader_parameter/BaseColor = Color(0.25839123, 0.23783153, 0.24133709, 1)
 shader_parameter/Metallic = 0.8
 shader_parameter/Roughness = 1.0
+shader_parameter/Anistropy = 0.0
+shader_parameter/AnistropyFlow = Vector2(0, 1)
 shader_parameter/specular = false
 shader_parameter/SpecularColor = Color(1, 1, 1, 1)
 shader_parameter/SpecularPower = 4.0
@@ -1376,6 +1388,8 @@ shader_parameter/albedo = true
 shader_parameter/BaseColor = Color(0.25882354, 0.23921569, 0.24313726, 1)
 shader_parameter/Metallic = 0.8
 shader_parameter/Roughness = 1.0
+shader_parameter/Anistropy = 0.0
+shader_parameter/AnistropyFlow = Vector2(0, 1)
 shader_parameter/specular = false
 shader_parameter/SpecularColor = Color(1, 1, 1, 1)
 shader_parameter/SpecularPower = 4.0
@@ -1393,6 +1407,8 @@ shader_parameter/albedo = true
 shader_parameter/BaseColor = Color(2.476, 2.884, 2.929, 1)
 shader_parameter/Metallic = 0.8
 shader_parameter/Roughness = 1.0
+shader_parameter/Anistropy = 0.0
+shader_parameter/AnistropyFlow = Vector2(0, 1)
 shader_parameter/specular = false
 shader_parameter/SpecularColor = Color(1, 1, 1, 1)
 shader_parameter/SpecularPower = 4.0
@@ -2144,6 +2160,8 @@ shader_parameter/albedo = true
 shader_parameter/BaseColor = Color(0.837469, 0.8374691, 0.83746904, 1)
 shader_parameter/Metallic = 0.8
 shader_parameter/Roughness = 1.0
+shader_parameter/Anistropy = 0.0
+shader_parameter/AnistropyFlow = Vector2(0, 1)
 shader_parameter/specular = false
 shader_parameter/SpecularColor = Color(1, 1, 1, 1)
 shader_parameter/SpecularPower = 4.0
@@ -2231,6 +2249,8 @@ shader_parameter/albedo = true
 shader_parameter/BaseColor = Color(0.41960785, 0.41568628, 0.4117647, 1)
 shader_parameter/Metallic = 0.8
 shader_parameter/Roughness = 1.0
+shader_parameter/Anistropy = 0.0
+shader_parameter/AnistropyFlow = Vector2(0, 1)
 shader_parameter/specular = false
 shader_parameter/SpecularColor = Color(1, 1, 1, 1)
 shader_parameter/SpecularPower = 4.0
@@ -2798,6 +2818,8 @@ shader_parameter/MetallicMap = ExtResource("5_htena")
 shader_parameter/Roughness = 1.0
 shader_parameter/RoughnessMap = ExtResource("7_6pb3s")
 shader_parameter/NormalMap = ExtResource("6_xqiim")
+shader_parameter/Anistropy = 0.0
+shader_parameter/AnistropyFlow = Vector2(0, 1)
 shader_parameter/specular = true
 shader_parameter/SpecularColor = Color(1, 1, 1, 1)
 shader_parameter/SpecularPower = 2.0
@@ -2809,7 +2831,7 @@ shader_parameter/RimPower = 2.0
 shader_parameter/RimColor = Color(1, 1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t3g51"]
-render_priority = 0
+render_priority = 1
 shader = ExtResource("3_aonjr")
 shader_parameter/albedo = true
 shader_parameter/BaseColor = Color(1, 1, 1, 1)
@@ -2819,6 +2841,8 @@ shader_parameter/MetallicMap = ExtResource("5_htena")
 shader_parameter/Roughness = 1.0
 shader_parameter/RoughnessMap = ExtResource("7_6pb3s")
 shader_parameter/NormalMap = ExtResource("6_xqiim")
+shader_parameter/Anistropy = 0.0
+shader_parameter/AnistropyFlow = Vector2(0, 1)
 shader_parameter/specular = true
 shader_parameter/SpecularColor = Color(1, 1, 1, 1)
 shader_parameter/SpecularPower = 6.0
@@ -2830,7 +2854,7 @@ shader_parameter/RimPower = 2.0
 shader_parameter/RimColor = Color(1, 1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_386tm"]
-render_priority = 0
+render_priority = 1
 shader = ExtResource("3_aonjr")
 shader_parameter/albedo = true
 shader_parameter/BaseColor = Color(1, 1, 1, 1)
@@ -2840,6 +2864,8 @@ shader_parameter/MetallicMap = ExtResource("5_htena")
 shader_parameter/Roughness = 1.0
 shader_parameter/RoughnessMap = ExtResource("7_6pb3s")
 shader_parameter/NormalMap = ExtResource("6_xqiim")
+shader_parameter/Anistropy = 0.0
+shader_parameter/AnistropyFlow = Vector2(0, 1)
 shader_parameter/specular = false
 shader_parameter/SpecularColor = Color(1, 1, 1, 1)
 shader_parameter/SpecularPower = 4.0
@@ -2851,7 +2877,7 @@ shader_parameter/RimPower = 2.0
 shader_parameter/RimColor = Color(1, 1, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aonjr"]
-size = Vector3(1.8, 4.25, 1.8)
+size = Vector3(1.8, 4.2680664, 1.8)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fufvc"]
 
@@ -2935,6 +2961,74 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_g0umw")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ah7fh"]
+render_priority = 0
+shader = ExtResource("6_do8ha")
+shader_parameter/albedo = true
+shader_parameter/BaseColor = Color(1, 1, 1, 1)
+shader_parameter/Texture2DParameter = ExtResource("8_e3ldi")
+shader_parameter/Metallic = 1.0
+shader_parameter/MetallicMap = ExtResource("5_htena")
+shader_parameter/Roughness = 1.0
+shader_parameter/RoughnessMap = ExtResource("7_6pb3s")
+shader_parameter/NormalMap = ExtResource("6_xqiim")
+shader_parameter/specular = true
+shader_parameter/SpecularColor = Color(1, 1, 1, 1)
+shader_parameter/SpecularPower = 2.0
+shader_parameter/diffuse = true
+shader_parameter/Wrap = true
+shader_parameter/WrapValue = 0.5
+shader_parameter/Rim = false
+shader_parameter/RimPower = 2.0
+shader_parameter/RimColor = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x2wht"]
+render_priority = 1
+shader = ExtResource("6_do8ha")
+shader_parameter/albedo = true
+shader_parameter/BaseColor = Color(1, 1, 1, 1)
+shader_parameter/Texture2DParameter = ExtResource("8_e3ldi")
+shader_parameter/Metallic = 0.8
+shader_parameter/MetallicMap = ExtResource("5_htena")
+shader_parameter/Roughness = 1.0
+shader_parameter/RoughnessMap = ExtResource("7_6pb3s")
+shader_parameter/NormalMap = ExtResource("6_xqiim")
+shader_parameter/specular = true
+shader_parameter/SpecularColor = Color(1, 1, 1, 1)
+shader_parameter/SpecularPower = 6.0
+shader_parameter/diffuse = true
+shader_parameter/Wrap = true
+shader_parameter/WrapValue = 0.5
+shader_parameter/Rim = false
+shader_parameter/RimPower = 2.0
+shader_parameter/RimColor = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_52es0"]
+render_priority = 1
+shader = ExtResource("6_do8ha")
+shader_parameter/albedo = true
+shader_parameter/BaseColor = Color(1, 1, 1, 1)
+shader_parameter/Texture2DParameter = ExtResource("8_e3ldi")
+shader_parameter/Metallic = 0.8
+shader_parameter/MetallicMap = ExtResource("5_htena")
+shader_parameter/Roughness = 1.0
+shader_parameter/RoughnessMap = ExtResource("7_6pb3s")
+shader_parameter/NormalMap = ExtResource("6_xqiim")
+shader_parameter/specular = false
+shader_parameter/SpecularColor = Color(1, 1, 1, 1)
+shader_parameter/SpecularPower = 4.0
+shader_parameter/diffuse = true
+shader_parameter/Wrap = true
+shader_parameter/WrapValue = 0.5
+shader_parameter/Rim = false
+shader_parameter/RimPower = 2.0
+shader_parameter/RimColor = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_08fmi"]
+render_priority = 0
+shader = ExtResource("10_aonjr")
+shader_parameter/colour = Color(1, 1, 1, 1)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_do8ha"]
 render_priority = 0
 shader = ExtResource("3_aonjr")
@@ -2942,6 +3036,8 @@ shader_parameter/albedo = true
 shader_parameter/BaseColor = Color(0.7385896, 0.7385896, 0.7385896, 1)
 shader_parameter/Metallic = 0.8
 shader_parameter/Roughness = 0.52800002508
+shader_parameter/Anistropy = 0.8
+shader_parameter/AnistropyFlow = Vector2(0, 1)
 shader_parameter/specular = false
 shader_parameter/SpecularColor = Color(1, 1, 1, 1)
 shader_parameter/SpecularPower = 4.0
@@ -2960,11 +3056,13 @@ environment = SubResource("Environment_do8ha")
 [node name="environment" type="Node" parent="." unique_id=778383943]
 
 [node name="Ceiling" type="MeshInstance3D" parent="environment" unique_id=1929032705]
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_i34wf")
 surface_material_override/0 = SubResource("ShaderMaterial_oeaww")
 
 [node name="Door" type="MeshInstance3D" parent="environment" unique_id=1056261354]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -0.025)
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_mxqoi")
 surface_material_override/0 = SubResource("ShaderMaterial_aonjr")
 surface_material_override/1 = SubResource("ShaderMaterial_ba8gm")
@@ -2977,6 +3075,7 @@ shape = SubResource("ConcavePolygonShape3D_do8ha")
 
 [node name="Door_001" type="MeshInstance3D" parent="environment" unique_id=1068862576]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, -0.025)
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_mxqoi")
 surface_material_override/0 = SubResource("ShaderMaterial_aonjr")
 surface_material_override/1 = SubResource("ShaderMaterial_ba8gm")
@@ -2989,6 +3088,7 @@ shape = SubResource("ConcavePolygonShape3D_do8ha")
 
 [node name="Door_002" type="MeshInstance3D" parent="environment" unique_id=555036828]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, 0, -0.025)
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_ochxq")
 surface_material_override/0 = SubResource("ShaderMaterial_aonjr")
 surface_material_override/1 = SubResource("ShaderMaterial_ba8gm")
@@ -3001,6 +3101,7 @@ shape = SubResource("ConcavePolygonShape3D_do8ha")
 
 [node name="Door_003" type="MeshInstance3D" parent="environment" unique_id=2096333780]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.5, 0, -0.025)
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_aoo83")
 surface_material_override/0 = SubResource("ShaderMaterial_aonjr")
 surface_material_override/1 = SubResource("ShaderMaterial_ba8gm")
@@ -3013,6 +3114,7 @@ shape = SubResource("ConcavePolygonShape3D_do8ha")
 
 [node name="Door_004" type="MeshInstance3D" parent="environment" unique_id=2046139636]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, 0, -0.025)
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_ahs6q")
 surface_material_override/0 = SubResource("ShaderMaterial_aonjr")
 surface_material_override/1 = SubResource("ShaderMaterial_ba8gm")
@@ -3025,6 +3127,7 @@ shape = SubResource("ConcavePolygonShape3D_do8ha")
 
 [node name="Door_005" type="MeshInstance3D" parent="environment" unique_id=72291859]
 transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, -0.4660015, 0, 5.014999)
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_pf41x")
 surface_material_override/0 = SubResource("ShaderMaterial_aonjr")
 surface_material_override/1 = SubResource("ShaderMaterial_ba8gm")
@@ -3037,6 +3140,7 @@ shape = SubResource("ConcavePolygonShape3D_do8ha")
 
 [node name="Door_006" type="MeshInstance3D" parent="environment" unique_id=368000982]
 transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 5.5339985, 0, 5.0149994)
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_dgsfw")
 surface_material_override/0 = SubResource("ShaderMaterial_aonjr")
 surface_material_override/1 = SubResource("ShaderMaterial_ba8gm")
@@ -3049,6 +3153,7 @@ shape = SubResource("ConcavePolygonShape3D_do8ha")
 
 [node name="Door_007" type="MeshInstance3D" parent="environment" unique_id=911491322]
 transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 11.5339985, 0, 5.015)
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_yocs8")
 surface_material_override/0 = SubResource("ShaderMaterial_aonjr")
 surface_material_override/1 = SubResource("ShaderMaterial_ba8gm")
@@ -3061,6 +3166,7 @@ shape = SubResource("ConcavePolygonShape3D_do8ha")
 
 [node name="Door_008" type="MeshInstance3D" parent="environment" unique_id=1849766115]
 transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 17.533998, 0, 5.0150003)
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_vx4tm")
 surface_material_override/0 = SubResource("ShaderMaterial_aonjr")
 surface_material_override/1 = SubResource("ShaderMaterial_ba8gm")
@@ -3073,6 +3179,7 @@ shape = SubResource("ConcavePolygonShape3D_do8ha")
 
 [node name="Door_009" type="MeshInstance3D" parent="environment" unique_id=1238784927]
 transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 23.533998, 0, 5.015001)
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_uj7cf")
 surface_material_override/0 = SubResource("ShaderMaterial_aonjr")
 surface_material_override/1 = SubResource("ShaderMaterial_ba8gm")
@@ -3084,105 +3191,126 @@ visible = false
 shape = SubResource("ConcavePolygonShape3D_do8ha")
 
 [node name="Door_Frame" type="MeshInstance3D" parent="environment" unique_id=656030108]
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_ihuia")
 surface_material_override/0 = SubResource("ShaderMaterial_8ec7o")
 
 [node name="Door_Frame_001" type="MeshInstance3D" parent="environment" unique_id=461513422]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_62igo")
 surface_material_override/0 = SubResource("ShaderMaterial_8ec7o")
 
 [node name="Door_Frame_002" type="MeshInstance3D" parent="environment" unique_id=1029385149]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_1k058")
 surface_material_override/0 = SubResource("ShaderMaterial_8ec7o")
 
 [node name="Door_Frame_003" type="MeshInstance3D" parent="environment" unique_id=279743386]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 0)
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_gr7mb")
 surface_material_override/0 = SubResource("ShaderMaterial_8ec7o")
 
 [node name="Door_Frame_004" type="MeshInstance3D" parent="environment" unique_id=2113175311]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 0)
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_lmyhd")
 surface_material_override/0 = SubResource("ShaderMaterial_8ec7o")
 
 [node name="Door_Frame_005" type="MeshInstance3D" parent="environment" unique_id=1374641505]
 transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 0.03399849, 0, 4.989999)
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_glw42")
 surface_material_override/0 = SubResource("ShaderMaterial_8ec7o")
 
 [node name="Door_Frame_006" type="MeshInstance3D" parent="environment" unique_id=416884310]
 transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 6.0339985, 0, 4.9899993)
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_8dj1m")
 surface_material_override/0 = SubResource("ShaderMaterial_8ec7o")
 
 [node name="Door_Frame_007" type="MeshInstance3D" parent="environment" unique_id=604865409]
 transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 12.0339985, 0, 4.99)
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_otqtn")
 surface_material_override/0 = SubResource("ShaderMaterial_8ec7o")
 
 [node name="Door_Frame_008" type="MeshInstance3D" parent="environment" unique_id=1551506136]
 transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 18.033998, 0, 4.9900002)
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_6kbh7")
 surface_material_override/0 = SubResource("ShaderMaterial_8ec7o")
 
 [node name="Door_Frame_009" type="MeshInstance3D" parent="environment" unique_id=1907347519]
 transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 24.033998, 0, 4.9900007)
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_n3gtm")
 surface_material_override/0 = SubResource("ShaderMaterial_8ec7o")
 
 [node name="Door_Handle" type="MeshInstance3D" parent="environment" unique_id=1886235615]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.41500002, 0, 0)
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_7dwnb")
 surface_material_override/0 = SubResource("ShaderMaterial_ba8gm")
 
 [node name="Door_Handle_001" type="MeshInstance3D" parent="environment" unique_id=1006149540]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.585, 0, 0)
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_guckb")
 surface_material_override/0 = SubResource("ShaderMaterial_ba8gm")
 
 [node name="Door_Handle_002" type="MeshInstance3D" parent="environment" unique_id=380495719]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.585, 0, 0)
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_dghxt")
 surface_material_override/0 = SubResource("ShaderMaterial_ba8gm")
 
 [node name="Door_Handle_003" type="MeshInstance3D" parent="environment" unique_id=360225798]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.585, 0, 0)
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_1f3tn")
 surface_material_override/0 = SubResource("ShaderMaterial_ba8gm")
 
 [node name="Door_Handle_004" type="MeshInstance3D" parent="environment" unique_id=763298091]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.585, 0, 0)
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_5vml1")
 surface_material_override/0 = SubResource("ShaderMaterial_ba8gm")
 
 [node name="Door_Handle_005" type="MeshInstance3D" parent="environment" unique_id=1221665591]
 transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 0.4489994, 0, 4.989999)
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_3hd76")
 surface_material_override/0 = SubResource("ShaderMaterial_ba8gm")
 
 [node name="Door_Handle_006" type="MeshInstance3D" parent="environment" unique_id=906612314]
 transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 6.4489994, 0, 4.9899993)
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_37oji")
 surface_material_override/0 = SubResource("ShaderMaterial_ba8gm")
 
 [node name="Door_Handle_007" type="MeshInstance3D" parent="environment" unique_id=106271173]
 transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 12.448998, 0, 4.99)
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_7v3qr")
 surface_material_override/0 = SubResource("ShaderMaterial_ba8gm")
 
 [node name="Door_Handle_008" type="MeshInstance3D" parent="environment" unique_id=1881461429]
 transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 18.448997, 0, 4.9900002)
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_ymq7w")
 surface_material_override/0 = SubResource("ShaderMaterial_ba8gm")
 
 [node name="Door_Handle_009" type="MeshInstance3D" parent="environment" unique_id=570717707]
 transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 24.448997, 0, 4.9900007)
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_gpon3")
 surface_material_override/0 = SubResource("ShaderMaterial_ba8gm")
 
 [node name="Door_Light" type="MeshInstance3D" parent="environment" unique_id=1930545940]
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_malt3")
 surface_material_override/0 = SubResource("ShaderMaterial_aonjr")
 surface_material_override/1 = SubResource("ShaderMaterial_xqiim")
@@ -3190,6 +3318,7 @@ surface_material_override/2 = SubResource("ShaderMaterial_6pb3s")
 
 [node name="Door_Light_001" type="MeshInstance3D" parent="environment" unique_id=2022996890]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_ocbdy")
 surface_material_override/0 = SubResource("ShaderMaterial_aonjr")
 surface_material_override/1 = SubResource("ShaderMaterial_xqiim")
@@ -3197,6 +3326,7 @@ surface_material_override/2 = SubResource("ShaderMaterial_6pb3s")
 
 [node name="Door_Light_002" type="MeshInstance3D" parent="environment" unique_id=1694262011]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_xiro7")
 surface_material_override/0 = SubResource("ShaderMaterial_aonjr")
 surface_material_override/1 = SubResource("ShaderMaterial_xqiim")
@@ -3204,6 +3334,7 @@ surface_material_override/2 = SubResource("ShaderMaterial_6pb3s")
 
 [node name="Door_Light_003" type="MeshInstance3D" parent="environment" unique_id=1195756209]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 0)
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_ht7hr")
 surface_material_override/0 = SubResource("ShaderMaterial_aonjr")
 surface_material_override/1 = SubResource("ShaderMaterial_xqiim")
@@ -3211,6 +3342,7 @@ surface_material_override/2 = SubResource("ShaderMaterial_6pb3s")
 
 [node name="Door_Light_004" type="MeshInstance3D" parent="environment" unique_id=1223542172]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 0)
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_gdxed")
 surface_material_override/0 = SubResource("ShaderMaterial_aonjr")
 surface_material_override/1 = SubResource("ShaderMaterial_xqiim")
@@ -3218,6 +3350,7 @@ surface_material_override/2 = SubResource("ShaderMaterial_6pb3s")
 
 [node name="Door_Light_005" type="MeshInstance3D" parent="environment" unique_id=1584099718]
 transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 0.03399849, 0, 4.989999)
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_pnt8q")
 surface_material_override/0 = SubResource("ShaderMaterial_aonjr")
 surface_material_override/1 = SubResource("ShaderMaterial_xqiim")
@@ -3225,6 +3358,7 @@ surface_material_override/2 = SubResource("ShaderMaterial_6pb3s")
 
 [node name="Door_Light_006" type="MeshInstance3D" parent="environment" unique_id=197582836]
 transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 6.0339985, 0, 4.9899993)
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_3hja7")
 surface_material_override/0 = SubResource("ShaderMaterial_aonjr")
 surface_material_override/1 = SubResource("ShaderMaterial_xqiim")
@@ -3232,6 +3366,7 @@ surface_material_override/2 = SubResource("ShaderMaterial_6pb3s")
 
 [node name="Door_Light_007" type="MeshInstance3D" parent="environment" unique_id=242887872]
 transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 12.0339985, 0, 4.99)
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_olrwy")
 surface_material_override/0 = SubResource("ShaderMaterial_aonjr")
 surface_material_override/1 = SubResource("ShaderMaterial_xqiim")
@@ -3239,6 +3374,7 @@ surface_material_override/2 = SubResource("ShaderMaterial_6pb3s")
 
 [node name="Door_Light_008" type="MeshInstance3D" parent="environment" unique_id=1878735898]
 transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 18.033998, 0, 4.9900002)
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_xil5t")
 surface_material_override/0 = SubResource("ShaderMaterial_aonjr")
 surface_material_override/1 = SubResource("ShaderMaterial_xqiim")
@@ -3246,12 +3382,14 @@ surface_material_override/2 = SubResource("ShaderMaterial_6pb3s")
 
 [node name="Door_Light_009" type="MeshInstance3D" parent="environment" unique_id=418088837]
 transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 24.033998, 0, 4.9900007)
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_74ij7")
 surface_material_override/0 = SubResource("ShaderMaterial_aonjr")
 surface_material_override/1 = SubResource("ShaderMaterial_xqiim")
 surface_material_override/2 = SubResource("ShaderMaterial_6pb3s")
 
 [node name="End_1" type="MeshInstance3D" parent="environment" unique_id=1960615488]
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_lswei")
 surface_material_override/0 = SubResource("ShaderMaterial_tmh0i")
 
@@ -3261,6 +3399,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_tmh0i")
 shape = SubResource("ConcavePolygonShape3D_htena")
 
 [node name="End_2" type="MeshInstance3D" parent="environment" unique_id=466327199]
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_8xisc")
 surface_material_override/0 = SubResource("ShaderMaterial_tmh0i")
 
@@ -3270,6 +3409,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_tmh0i")
 shape = SubResource("ConcavePolygonShape3D_xqiim")
 
 [node name="Floor" type="MeshInstance3D" parent="environment" unique_id=593277981]
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_j0hyf")
 surface_material_override/0 = SubResource("ShaderMaterial_htena")
 
@@ -3280,6 +3420,7 @@ visible = false
 shape = SubResource("ConcavePolygonShape3D_aonjr")
 
 [node name="Wall" type="MeshInstance3D" parent="environment" unique_id=518724901]
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_03tsx")
 surface_material_override/0 = SubResource("ShaderMaterial_tmh0i")
 surface_material_override/1 = SubResource("ShaderMaterial_8ec7o")
@@ -3292,6 +3433,7 @@ shape = SubResource("ConcavePolygonShape3D_oeaww")
 
 [node name="Wall_001" type="MeshInstance3D" parent="environment" unique_id=1899833108]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_16q8c")
 surface_material_override/0 = SubResource("ShaderMaterial_tmh0i")
 surface_material_override/1 = SubResource("ShaderMaterial_8ec7o")
@@ -3304,6 +3446,7 @@ shape = SubResource("ConcavePolygonShape3D_oeaww")
 
 [node name="Wall_002" type="MeshInstance3D" parent="environment" unique_id=445702960]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_veofu")
 surface_material_override/0 = SubResource("ShaderMaterial_tmh0i")
 surface_material_override/1 = SubResource("ShaderMaterial_8ec7o")
@@ -3316,6 +3459,7 @@ shape = SubResource("ConcavePolygonShape3D_oeaww")
 
 [node name="Wall_003" type="MeshInstance3D" parent="environment" unique_id=721020435]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 0)
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_56nr0")
 surface_material_override/0 = SubResource("ShaderMaterial_tmh0i")
 surface_material_override/1 = SubResource("ShaderMaterial_8ec7o")
@@ -3328,6 +3472,7 @@ shape = SubResource("ConcavePolygonShape3D_oeaww")
 
 [node name="Wall_004" type="MeshInstance3D" parent="environment" unique_id=1835860599]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 0)
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_ds0v3")
 surface_material_override/0 = SubResource("ShaderMaterial_tmh0i")
 surface_material_override/1 = SubResource("ShaderMaterial_8ec7o")
@@ -3340,6 +3485,7 @@ shape = SubResource("ConcavePolygonShape3D_oeaww")
 
 [node name="Wall_005" type="MeshInstance3D" parent="environment" unique_id=1385270465]
 transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 0.03399849, 0, 4.989999)
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_ncgwl")
 surface_material_override/0 = SubResource("ShaderMaterial_tmh0i")
 surface_material_override/1 = SubResource("ShaderMaterial_8ec7o")
@@ -3352,6 +3498,7 @@ shape = SubResource("ConcavePolygonShape3D_oeaww")
 
 [node name="Wall_006" type="MeshInstance3D" parent="environment" unique_id=695853870]
 transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 6.0339985, 0, 4.9899993)
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_weayn")
 surface_material_override/0 = SubResource("ShaderMaterial_tmh0i")
 surface_material_override/1 = SubResource("ShaderMaterial_8ec7o")
@@ -3364,6 +3511,7 @@ shape = SubResource("ConcavePolygonShape3D_oeaww")
 
 [node name="Wall_007" type="MeshInstance3D" parent="environment" unique_id=1928469566]
 transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 12.0339985, 0, 4.99)
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_hssie")
 surface_material_override/0 = SubResource("ShaderMaterial_tmh0i")
 surface_material_override/1 = SubResource("ShaderMaterial_8ec7o")
@@ -3376,6 +3524,7 @@ shape = SubResource("ConcavePolygonShape3D_oeaww")
 
 [node name="Wall_008" type="MeshInstance3D" parent="environment" unique_id=526796586]
 transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 18.033998, 0, 4.9900002)
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_f5nmi")
 surface_material_override/0 = SubResource("ShaderMaterial_tmh0i")
 surface_material_override/1 = SubResource("ShaderMaterial_8ec7o")
@@ -3388,6 +3537,7 @@ shape = SubResource("ConcavePolygonShape3D_oeaww")
 
 [node name="Wall_009" type="MeshInstance3D" parent="environment" unique_id=753026876]
 transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 24.033998, 0, 4.9900007)
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_eqmr2")
 surface_material_override/0 = SubResource("ShaderMaterial_tmh0i")
 surface_material_override/1 = SubResource("ShaderMaterial_8ec7o")
@@ -3410,30 +3560,51 @@ script = ExtResource("3_oeaww")
 raycast = NodePath("RayCast3D")
 
 [node name="RayCast3D" type="RayCast3D" parent="player/Camera3D" unique_id=1445076933]
-target_position = Vector3(0, 0, -1)
+target_position = Vector3(0, 0, -5)
 
-[node name="StaticBody3D" type="RigidBody3D" parent="." unique_id=1721375362 groups=["grab"]]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 1.4610145)
+[node name="Barstool" type="RigidBody3D" parent="." unique_id=1721375362 groups=["grab"]]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 3.105124, 0, 0.895532)
 script = ExtResource("3_5fjre")
 materials = Array[Material]([SubResource("ShaderMaterial_xjl4t"), SubResource("ShaderMaterial_t3g51"), SubResource("ShaderMaterial_386tm")])
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=417072905]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4547472, -0.06277943)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Barstool" unique_id=417072905]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4493761, -0.06277943)
 shape = SubResource("BoxShape3D_aonjr")
 
-[node name="Barstool" type="MeshInstance3D" parent="StaticBody3D" unique_id=89981009]
+[node name="Barstool" type="MeshInstance3D" parent="Barstool" unique_id=89981009]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.23377848)
 mesh = SubResource("ArrayMesh_8m212")
 surface_material_override/0 = SubResource("ShaderMaterial_xjl4t")
 surface_material_override/1 = SubResource("ShaderMaterial_t3g51")
 surface_material_override/2 = SubResource("ShaderMaterial_386tm")
 
+[node name="Barstool2" type="RigidBody3D" parent="." unique_id=1417334036 groups=["grab"]]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.9397638, 0, 1.4610145)
+script = ExtResource("3_5fjre")
+materials = Array[Material]([SubResource("ShaderMaterial_ah7fh"), SubResource("ShaderMaterial_x2wht"), SubResource("ShaderMaterial_52es0")])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Barstool2" unique_id=596695779]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4510851, -0.06277943)
+shape = SubResource("BoxShape3D_aonjr")
+
+[node name="Barstool" type="MeshInstance3D" parent="Barstool2" unique_id=1027594279]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.23377848)
+material_overlay = SubResource("ShaderMaterial_08fmi")
+mesh = SubResource("ArrayMesh_8m212")
+surface_material_override/0 = SubResource("ShaderMaterial_ah7fh")
+surface_material_override/1 = SubResource("ShaderMaterial_x2wht")
+surface_material_override/2 = SubResource("ShaderMaterial_52es0")
+
 [node name="ShaderToggles" type="Node" parent="." unique_id=1860692423]
 script = ExtResource("2_oeaww")
 materials = Array[Material]([SubResource("ShaderMaterial_xjl4t"), SubResource("ShaderMaterial_t3g51"), SubResource("ShaderMaterial_386tm"), SubResource("ShaderMaterial_8ec7o"), SubResource("ShaderMaterial_tmh0i"), SubResource("ShaderMaterial_aonjr"), SubResource("ShaderMaterial_do8ha"), SubResource("ShaderMaterial_ba8gm"), SubResource("ShaderMaterial_xqiim"), SubResource("ShaderMaterial_htena"), SubResource("ShaderMaterial_6pb3s"), SubResource("ShaderMaterial_oeaww")])
 specular_materials = Array[Material]([SubResource("ShaderMaterial_xjl4t"), SubResource("ShaderMaterial_t3g51"), SubResource("ShaderMaterial_ba8gm")])
+materials_xray = Array[Material]([SubResource("ShaderMaterial_ah7fh"), SubResource("ShaderMaterial_x2wht"), SubResource("ShaderMaterial_52es0")])
+specular_materials_xray = Array[Material]([SubResource("ShaderMaterial_ah7fh"), SubResource("ShaderMaterial_x2wht")])
 shader = ExtResource("3_aonjr")
 shader_ambient_disabled = ExtResource("9_ah7fh")
+shader_xray = ExtResource("6_do8ha")
+shader_ambient_disabled_xray = ExtResource("14_htena")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=844974081]
 transform = Transform3D(1, 0, 0, 0, -0.5017848, 0.8649925, 0, -0.8649925, -0.5017848, 0.5344531, 0, 0)
@@ -3451,4 +3622,5 @@ text = "1: Albedo
 5: Wrap Diffuse"
 metadata/_edit_use_anchors_ = true
 
-[connection signal="mouse_entered" from="StaticBody3D" to="StaticBody3D" method="_on_mouse_entered"]
+[connection signal="mouse_entered" from="Barstool" to="Barstool" method="_on_mouse_entered"]
+[connection signal="mouse_entered" from="Barstool2" to="Barstool2" method="_on_mouse_entered"]
