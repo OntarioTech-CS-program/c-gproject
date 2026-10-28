@@ -18,11 +18,14 @@ shader_parameter/albedo = true
 shader_parameter/BaseColor = Color(1, 0.21176471, 1, 1)
 shader_parameter/Texture2DParameter = ExtResource("3_l6nis")
 shader_parameter/specular = false
-shader_parameter/SpecularCololr = Color(1, 1, 1, 1)
+shader_parameter/SpecularColor = Color(0, 0, 0, 1)
 shader_parameter/SpecularPower = 4.0
 shader_parameter/diffuse = true
 shader_parameter/Wrap = true
 shader_parameter/WrapValue = 0.5
+shader_parameter/Rim = false
+shader_parameter/RimPower = 2.0
+shader_parameter/RimColor = Color(1, 1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l6nis"]
 render_priority = 0
@@ -31,11 +34,14 @@ shader_parameter/albedo = true
 shader_parameter/BaseColor = Color(1, 1, 1, 1)
 shader_parameter/Texture2DParameter = ExtResource("3_l6nis")
 shader_parameter/specular = true
-shader_parameter/SpecularCololr = Color(1, 1, 1, 1)
+shader_parameter/SpecularColor = Color(0, 0, 0, 1)
 shader_parameter/SpecularPower = 4.0
 shader_parameter/diffuse = true
 shader_parameter/Wrap = true
 shader_parameter/WrapValue = 0.5
+shader_parameter/Rim = false
+shader_parameter/RimPower = 2.0
+shader_parameter/RimColor = Color(0, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dcn15"]
 render_priority = 0
@@ -47,11 +53,14 @@ shader_parameter/MetallicMap = ExtResource("7_53g42")
 shader_parameter/RoughnessMap = ExtResource("9_8ec7o")
 shader_parameter/NormalMap = ExtResource("8_xfhtf")
 shader_parameter/specular = true
-shader_parameter/SpecularCololr = Color(1, 1, 1, 1)
+shader_parameter/SpecularColor = Color(1, 1, 1, 1)
 shader_parameter/SpecularPower = 2.0
 shader_parameter/diffuse = true
 shader_parameter/Wrap = true
 shader_parameter/WrapValue = 0.5
+shader_parameter/Rim = false
+shader_parameter/RimPower = 2.0
+shader_parameter/RimColor = Color(1, 1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1oqqo"]
 render_priority = 0
@@ -63,11 +72,14 @@ shader_parameter/MetallicMap = ExtResource("7_53g42")
 shader_parameter/RoughnessMap = ExtResource("9_8ec7o")
 shader_parameter/NormalMap = ExtResource("8_xfhtf")
 shader_parameter/specular = true
-shader_parameter/SpecularCololr = Color(0.97060233, 0.97060245, 0.97060233, 1)
-shader_parameter/SpecularPower = 6.0
+shader_parameter/SpecularColor = Color(1, 1, 1, 1)
+shader_parameter/SpecularPower = 4.0
 shader_parameter/diffuse = true
 shader_parameter/Wrap = true
 shader_parameter/WrapValue = 0.5
+shader_parameter/Rim = false
+shader_parameter/RimPower = 2.0
+shader_parameter/RimColor = Color(1, 1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xfhtf"]
 render_priority = 0
@@ -79,16 +91,19 @@ shader_parameter/MetallicMap = ExtResource("7_53g42")
 shader_parameter/RoughnessMap = ExtResource("9_8ec7o")
 shader_parameter/NormalMap = ExtResource("8_xfhtf")
 shader_parameter/specular = false
-shader_parameter/SpecularCololr = Color(0, 0, 0, 1)
+shader_parameter/SpecularColor = Color(1, 1, 1, 1)
 shader_parameter/SpecularPower = 4.0
 shader_parameter/diffuse = true
 shader_parameter/Wrap = true
 shader_parameter/WrapValue = 0.5
+shader_parameter/Rim = false
+shader_parameter/RimPower = 2.0
+shader_parameter/RimColor = Color(1, 1, 1, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5l37j"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ec7o"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_215db"]
-material = SubResource("StandardMaterial3D_5l37j")
+material = SubResource("StandardMaterial3D_8ec7o")
 
 [sub_resource type="Environment" id="Environment_hg0er"]
 ambient_light_source = 2
@@ -101,7 +116,7 @@ ambient_light_energy = 0.14
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aob5h"]
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_g0umw"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_tmh0i"]
 _surfaces = [{
 "aabb": AABB(-0.9000001, -1.6807146, -1.1892056, 1.8000001, 3.7499998, 1.937486),
 "format": 34896613377,
@@ -175,7 +190,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("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")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_g0umw")
+shadow_mesh = SubResource("ArrayMesh_tmh0i")
 
 [node name="ShaderTesting" type="Node3D" unique_id=526358687]
 
@@ -218,6 +233,7 @@ text = "1: Albedo
 3: Ambient
 4: Specular
 5: Wrap Diffuse"
+metadata/_edit_use_anchors_ = true
 
 [node name="Barstool" type="MeshInstance3D" parent="." unique_id=1877071584]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.614941, 0, 0)
