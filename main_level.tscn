@@ -3152,7 +3152,7 @@ shader_parameter/RimColor = Color(1, 1, 1, 1)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_08fmi"]
 render_priority = 0
 shader = ExtResource("10_aonjr")
-shader_parameter/colour = Color(1, 1, 1, 1)
+shader_parameter/colour = Color(1, 0.6117647, 0.6117647, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_do8ha"]
 render_priority = 0
